@@ -77,9 +77,3 @@ where P: AsRef<Path>, {
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
 }
-//https://stackoverflow.com/questions/29570607/is-there-a-good-way-to-convert-a-vect-to-an-array
-fn vec_array<T: std::fmt::Debug, const N: usize>(v: Vec<T>) -> [T; N] {
-    dbg!(&v);
-    v.try_into()
-        .unwrap_or_else(|v: Vec<T>| panic!("Expected a Vec of length {} but it was {}", N, v.len()))
-}
